@@ -146,7 +146,7 @@ def main():
     # folder = "vid"
     singer = st.text_input("Singer name: ")
     seconds = st.number_input("Number of seconds to cut: ")
-    num = st.number_input("Number of videos: ",min_value=2, max_value=50, step=1)
+    num = st.number_input("Number of videos: ",min_value=10, max_value=50, step=1)
     start_or_end = "start"
     to = st.text_input("Email address: ")
 
