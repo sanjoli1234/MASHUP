@@ -41,6 +41,8 @@ def get_links(query):
 def download_video(link, folder):
     yt = YouTube(link)
     stream = yt.streams.first()
+    if not os.path.isdir(folder):
+        os.makedirs(folder)
     stream.download(folder)
     print("Video downloaded successfully")
     
