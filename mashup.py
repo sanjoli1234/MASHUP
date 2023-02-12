@@ -43,15 +43,20 @@ def download_video(link, folder):
     stream = yt.streams.first()
     if not os.path.isdir(folder):
         os.makedirs(folder)
+    # for link in links:
+    #     download_video(link, folder)
+
     stream.download(folder)
     print("Video downloaded successfully")
     
 def convert_to_audio(folder):
     for filename in os.listdir(folder):
         if filename.endswith(".3gpp"):
-            video = VideoFileClip(os.path.join(folder, filename))
+            # path=os.getcwd()
+            pathh=os.path.abspath(filename)
+            video = VideoFileClip(pathh)
             audio = video.audio
-            audio.write_audiofile(os.path.join(folder, filename.split(".")[0] + ".mp3"))
+            audio.write_audiofile(pathh.split(".")[0] + ".mp3")
             print("Converted {} to audio successfully".format(filename))
             
 def cut_audio(folder, seconds):
@@ -82,8 +87,8 @@ def merge_audio(folder, output_filename):
 
 
 def send_email(to, audio_filename):
-    from_email = "kaamkartechlo5050@gmail.com"
-    from_password = "fsxjjjwvmklfnzfw"
+    from_email =  "kaamkartechlo5050@gmail.com"
+    from_password =  "fsxjjjwvmklfnzfw"
     subject = "Audio file"
     message = "Attached is the audio file."
 
@@ -117,7 +122,7 @@ def main():
     folder = "vid"
     singer = st.text_input("Singer name: ")
     seconds = st.number_input("Number of seconds to cut: ")
-    num = st.number_input("Number of videos: ",min_value=10, max_value=50, step=1)
+    num = st.number_input("Number of videos: ",min_value=2, max_value=50, step=1)
     start_or_end = "start"
     to = st.text_input("Email address: ")
 
