@@ -167,7 +167,7 @@ def main():
             send_email(to, output_name)
             st.success("Audio file sent to your email address successfully")
             # return 0
-#             exit(1)
+            exit(1)
         else:
             st.error("No audio file found for the singer")
 
